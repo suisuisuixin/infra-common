@@ -1,6 +1,7 @@
 resources:
   - ../../../common-services/grafana
   - ingress.yaml
+  - job.yaml
 commonLabels:
   app: control-grafana
 patchesStrategicMerge:

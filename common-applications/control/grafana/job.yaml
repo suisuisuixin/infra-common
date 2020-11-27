@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testjob
+  generateName: app-slack-notification-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      containers:
+      - name: hello #slack-notification
+        image: busybox #curlimages/curl
+        command: ["echo","hello job!"]
+#          - "curl"
+#          - "-X"
+#          - "GET"
+#          - "-u"
+#          - "osinfra:purger@1234"
+#          - "--data-urlencode"
+#          - "payload={\"hostname\": \"cache.openlookeng.io\"}"
+#          - "https://api.openeuler.org/nginx-purger/purg"
+      restartPolicy: Never
+  backoffLimit: 2
